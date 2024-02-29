@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Supple Storefront</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div id="loadingSpinner" class="spinner-overlay" hidden>
+  </div>
+
+  <div id="contentToBlur">
+    <div class="header">
+      <img src="images/logo_green_transparent_cropped.png" alt="Supple - Your Wellness Partner" />
+    </div>
+
+    <div class="ai-input-form">
+      <div class="input-wrapper">
+        <input type="number" id="aiUserAge" value="30" placeholder="Your Age" />
+        <label for="aiUserAge">Your Age</label>
+      </div>
+      <div class="input-wrapper">
+        <input type="text" id="aiUserGender"  value="Female" placeholder="Your Gender" />
+        <label for="aiUserGender">Your Gender</label>
+      </div>
+      <div class="input-wrapper">
+        <input type="text" id="aiUserRole" value="VP Marketing" placeholder="Your Work Role" />
+        <label for="aiUserRole">Your Work Role</label>
+      </div>
+      <div class="input-wrapper">
+        <input type="text" id="aiUserCareer" value="Fit Insurance Co" placeholder="Your Career" />
+        <label for="aiUserCareer">Your Career</label>
+      </div>
+      <div class="input-wrapper">
+        <input type="text" id="userLocation" value = "Toronto" placeholder="Your Location" />
+        <label for="userLocation">Your Location</label>
+      </div>
+      <button id="fetchButton">Get Recommendations</button>
+    </div>
+
+    <div id = "commentsSections" class="coments-container">
+      <h2>Supple Insights</h2>
+      <div id = "commentsList" class = "comments-list">
+
+      </div>
+    </div>
+    <!-- Popup Modal for Improvement Areas -->
+    <div id="improvementModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Select Areas to Improve</h2>
+        <div id="improvementButtonsContainer" class="improvement-buttons">
+          <button class="improve-btn" data-improve="Energy">Energy</button>
+          <button class="improve-btn" data-improve="Focus">Focus</button>
+          <button class="improve-btn" data-improve="Mood">Mood</button>
+          <button class="improve-btn" data-improve="Relaxation">Relaxation</button>
+          <button class="improve-btn" data-improve="Creativity">Creativity</button>
+          <button class="improve-btn" data-improve="Beauty">Beauty</button>
+        </div>
+        <button id="submitImprovements" class="submit-button">Submit</button>
+      </div>
+    </div>
+
+    <div id="productContainer" class="product-container">
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
