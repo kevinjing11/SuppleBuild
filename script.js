@@ -1,7 +1,8 @@
-//Currenlty, the system is subject to API key abuse if modal is opened and closed rapidly
-//If Request is called, then request stops, AI still responds
 
+//Config
+import config from './config.js';
 document.addEventListener("DOMContentLoaded", function () {
+
 
   const modal = document.getElementById("improvementModal");
   const btns = document.querySelectorAll(".improve-btn");
@@ -70,7 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error during backend call:", error);
     } finally {
       hideSpinner();
-      
+
     }
     isRequestInProgress = false; // Reset the flag when done
   }
@@ -123,7 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Once the final input is ready, proceed with backend call
     const city = document.getElementById("userLocation").value; // Grab city
     await callBackendWithUpdatedValues(city, finalInputDict);
-   
+
      // Ensuring aiResponseData has comments before displaying
      //Ensure case is correct
      if (aiResponseData && Array.isArray(aiResponseData.comments)) {
@@ -149,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
   async function callBackendWithUpdatedValues(city, inputDict) {
     console.log("Calling backend with: ", JSON.stringify({ city, input_dict: inputDict }));
     try {
-      const response = await fetch("http://localhost:3000/runBackend", {
+      const response = await fetch(`${config.backendURL}/runBackend`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ city, input_dict: inputDict }),
@@ -180,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //AI Function Call Promise: Currently AI being hit multiple times
   function callAIEndpoint(userProfile) {
     return new Promise((resolve, reject) => {
-      fetch("http://localhost:3000/ai-output", {
+      fetch(`${config.backendURL}/ai-output`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
